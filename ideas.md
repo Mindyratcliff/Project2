@@ -16,3 +16,10 @@
 
 ## User Story
 ---
+
+## Branching Rules
+---
+* make a new branch for a small feature
+* once feature is working, push to develop
+* Delete branch once pulled into develop
+* Push develop into main 
