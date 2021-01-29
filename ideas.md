@@ -1,4 +1,4 @@
 # project-ideas
 
 passportJS for oauth authentication
-D3JS fro data visualization
+D3JS for data visualization
