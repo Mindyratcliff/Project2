@@ -1,0 +1,27 @@
+{
+  "name": "project2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mindyratcliff/Project2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mindyratcliff/Project2/issues"
+  },
+  "homepage": "https://github.com/Mindyratcliff/Project2#readme",
+  "dependencies": {
+    "eslint": "^7.18.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "heroku": "^7.47.11",
+    "sequelize": "^6.5.0"
+  }
+}
