@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Mindyratcliff/Project2#readme",
   "dependencies": {
+    "eslint": "^7.18.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
     "heroku": "^7.47.11",
