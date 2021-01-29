@@ -16,6 +16,9 @@
 
 ## User Story
 ---
+As an artist,
+I want an app to make and save a drawing
+under my own personal account. 
 
 ## Branching Rules
 ---
