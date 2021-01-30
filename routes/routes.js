@@ -4,14 +4,13 @@ const drawing = require('../models/drawing');
 
 router.post('api/drawings', (req, res) => {
     drawing.create({
-        author: req.body.title,
+        title: req.body.title,
         body: req.body.body,
         created_at: req.body.created_at
     }).then(data => {
         res.json(data);
         res.end();
     });
-
 });
 
 router.get('api/drawings', (req, res) => {
