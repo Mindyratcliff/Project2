@@ -11,7 +11,6 @@ router.post('api/drawings', (req, res) => {
         res.json(data);
         res.end();
     });
-
 });
 
 router.get('api/drawings', (req, res) => {
