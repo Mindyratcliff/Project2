@@ -1,0 +1,52 @@
+
+a.navbar-brand{
+    /* background-color: #00ffff; */
+    margin: 0 auto;
+    font-size: 70pt;
+}
+div.row1 {
+    height: 80rem;
+}
+
+ol {
+    padding: 20px;
+}
+.fa-trash-alt {
+    font-size: 40px;
+}
+ol#myList > li{
+    border: 3px solid black;
+    border-radius: 30px;
+    margin-bottom: 5px;
+    padding: 15px;
+    height: 80px;
+    vertical-align: middle;
+}
+ol#myList > li :hover {
+    background-color: aqua;
+}
+#main {
+    /* background-color:rgb(138, 146, 138);  */
+    margin: 0 auto;
+}
+canvas#myCanvas {
+    border: 2px solid black;
+}
+button.btn {
+    margin-bottom: 20px;
+    width: 100px;
+    
+} 
+div.myButton{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    
+
+}
+
+a.navbar-brand > span.title {
+    font-family: 'Potta One', cursive;
+    color: orange;
+ 
+}
