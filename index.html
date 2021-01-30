@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="public/assets/css/styles.css">
+    <!-- bootstrap links -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+   <!-- font awesome link for trash icon -->
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+    crossorigin="anonymous">
+
+    <!-- our downloaded paper.js folder which contains all files including canvas imported files -->
+    <script src="./paperjs/dist/paper-full.js"></script>
+
+    <!-- copy and pasted paper.js drawer file and linked it to a canvas named myCanvas -->
+    <script type="text/paperscript" src="./public/assets/js/index.js" canvas="myCanvas"></script>
+
+    <!-- font awsome for tile navbar "happy Trees" -->
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-light ">
+        <div class="container-fluid">
+            <a class="navbar-brand " href="#">
+                <span class="title">Happy</span>
+                <img src="./burger2.jpeg" alt="logo" width="200" height="200" class="align-middle">
+                <span class="title">Trees</span>
+            </a>
+        </div>
+    </nav>
+
+    
+    <div class="row">
+        <!-- our side bar saved list items. with the delete icocn -->
+        <div class="sidebar col-4" id="side">
+            <ol id="myList">
+                <li> This is an example of a filename
+                    <i class="fas fa-trash-alt float-end text-danger"></i>
+                </li>
+                <li>
+                    <i class="fas fa-trash-alt float-end text-danger "></i>
+                </li>
+                <li>
+                    <i class="fas fa-trash-alt float-end text-danger "></i>
+                </li>
+                <li>
+                    <i class="fas fa-trash-alt float-end text-danger "></i>
+                </li>
+                <li>
+                    <i class="fas fa-trash-alt float-end text-danger "></i>
+                </li>
+                <li>
+                    <i class="fas fa-trash-alt float-end text-danger "></i>
+                </li>
+            </ol>
+        </div>
+
+        <div class="art col-8" id="main">
+            <div class="row">
+                <!-- our canvas from paperjs  -->
+                <div class="canvas col">
+                    <canvas id="myCanvas" width="800" height="600"></canvas>
+                </div>
+                <!-- our save and clear buttons for paperjs -->
+                <div class="myButton col">
+                    <div>
+                        <button type="button" class="save btn btn-success">Save</button>
+                    </div>
+                    <div>
+                        <button type="button" class="clear btn btn-warning"> Clear</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>
