@@ -1,30 +1,13 @@
-const express = require('express');
-const router = express.Router();
-const drawing = require('../models/drawing');
+const db = require("../models");
 
-router.post('api/drawings', (req, res) => {
-    drawing.create({
-        title: req.body.title,
-        body: req.body.body,
-        created_at: req.body.created_at
-    }).then(data => {
-        res.json(data);
-        res.end();
-    });
-});
-
-router.get('api/drawings', (req, res) => {
-    drawing.findAll({}).then(data => {
-        res.json(data);
-    });
-});
-
-router.update('api/drawings/:id', (req, res) => {
-
-});
-
-router.delete('api/drawings/:id', (req, res) => {
-
-});
-
-module.exports = router;
+module.exports = app => {
+	app.get("/dashboard", async (req, res) => {
+		console.log(req.user);
+		const drawings = await db.Drawing.findAll({
+			where: { UserId: req.user.dataValues.id },
+			include: [db.User],
+		});
+		console.log(drawings);
+		res.send(req.user);
+	});
+};
