@@ -1,6 +1,6 @@
 const passport = require("passport");
 const FacebookStrategy = require("passport-facebook").Strategy;
-// IMPORT USER MODEL: const db = require("../models")
+const db = require("../models");
 const keys = require("../../config/keys");
 
 passport.use(
@@ -14,7 +14,7 @@ passport.use(
 			const id = profile.id;
 			const username = profile.displayName;
 
-			const user = await User.findOrCreate({
+			const user = await db.User.findOrCreate({
 				where: { id },
 				defaults: {
 					username,
@@ -27,9 +27,9 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
-	done(null, user._id);
+	done(null, user[0].dataValues.id);
 });
 
 passport.deserializeUser((id, done) => {
-	User.findById(id).then(user => done(null, user));
+	db.User.findByPk(id).then(user => done(null, user));
 });

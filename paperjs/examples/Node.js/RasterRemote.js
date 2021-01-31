@@ -12,22 +12,22 @@ var raster = new paper.Raster(url);
 raster.position = paper.view.center;
 
 raster.onLoad = function() {
-    paper.view.update();
-    console.log('The image has loaded:' + raster.bounds);
+  paper.view.update();
+  console.log('The image has loaded:' + raster.bounds);
 
-    // Saving the canvas to a file.
-    out = fs.createWriteStream(__dirname + '/canvas.png');
-    stream = canvas.pngStream();
+  // Saving the canvas to a file.
+  out = fs.createWriteStream(__dirname + '/canvas.png');
+  stream = canvas.pngStream();
 
-    stream.on('data', function(chunk) {
-        out.write(chunk);
-    });
+  stream.on('data', (chunk) => {
+    out.write(chunk);
+  });
 
-    stream.on('end', function() {
-        console.log('saved png');
-    });
+  stream.on('end', () => {
+    console.log('saved png');
+  });
 };
 
 raster.onError = function(message) {
-    console.error(message);
+  console.error(message);
 };

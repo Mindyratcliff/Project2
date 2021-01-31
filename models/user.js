@@ -1,8 +1,9 @@
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define("User", {
+  const User = sequelize.define('User', {
     id: {
       type: DataTypes.STRING,
       allowNull: false,
+      primaryKey: true,
     },
     username: {
       type: DataTypes.STRING,
@@ -13,9 +14,9 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  User.associate = (models) => {
+  User.associate = models => {
     User.hasMany(models.Drawing, {
-      onDelete: "cascade",
+      onDelete: 'cascade',
     });
   };
 
