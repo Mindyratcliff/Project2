@@ -4,11 +4,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Happy Trees</title>
+    <!-- main CSS style sheet -->
+    <link rel="stylesheet" href="/public/assets/css/styles.css"> 
+    
+    <!-- font awsome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+    crossorigin="anonymous">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
+
+     <!-- bootstrap links -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    
+    <!-- jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    <!-- PaperJs Canvas and Script -->
+    <script type="text/javascript" src="/paperjs/docs/assets/js/paper.js"></script>
+    <script type="text/paperscript" canvas= "myCanvas" data-paper-ingore="true">
+        var path;
+
+        var textItem = new PointText({
+        content: 'Click and drag to draw your work of Art.',
+        point: new Point(30, 40),
+        fillColor: 'black',
+        });
+        
+        function onMouseDown(event) {
+        // If we produced a path before, deselect it:
+        if (path) {
+            path.selected = false;
+        }
+        
+        // Create a new path and set its stroke color to black:
+        path = new Path({
+            segments: [event.point],
+            strokeColor: 'black',
+            // Select the path, so we can see its segment points:
+            fullySelected: false
+        });
+        }
+        
+        // While the user drags the mouse, points are added to the path
+        // at the position of the mouse:
+        function onMouseDrag(event) {
+        path.add(event.point);
+        
+        // Update the content of the text item to show how many
+        // segments it has:
+        // -- textItem.content = 'Segment count: ' + path.segments.length;
+        }
+        
+        // When the mouse is released, we simplify the path:
+        function onMouseUp(event) {
+        var segmentCount = path.segments.length;
+        
+        // When the mouse is released, simplify it:
+        path.simplify(10);
+        
+        // Select the path, so we can see its segments:
+        path.fullySelected = false;
+        
+        var newSegmentCount = path.segments.length;
+        var difference = segmentCount - newSegmentCount;
+        var percentage = 100 - Math.round(newSegmentCount / segmentCount * 100);
+        // -- textItem.content = difference + ' of the ' + segmentCount + ' segments were removed. Saving ' + percentage + '%';
+        }
+    </script>   
+    
+    <!-- Main script for JS code -->
+    <script type="text/javascript" src="/public/assets/js/index.js"></script>
+
 </head>
 
 <body>
-
+        {{{ body }}}
 </body>
 
 </html>
