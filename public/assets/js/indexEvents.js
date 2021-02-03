@@ -3,7 +3,13 @@
 // create variables to hold html elements
 
 // create funcitons to handle the saving of drawings
+$(".save-drawing").on("click", function(event) {
+    event.preventDefault();
 
+    // create text field and prompt user for drawing name
+
+    // after getting drawing name send information to database
+})
 // craete funcitons to create list items for each drawing that a user has
 
 // create functions to handle the deletion of a drawing
