@@ -1,8 +1,9 @@
 const db = require('../models');
+const requireLogin = require('./middleware/requireLogin');
 
 module.exports = app => {
     // fetch the drawings
-    app.get('/api/drawings', async (req, res) => {
+    app.get('/api/drawings', requireLogin, async (req, res) => {
         const drawings = await db.Drawing.findAll({
             where: { UserId: req.user.dataValues.id },
             include: [db.User],
@@ -11,7 +12,7 @@ module.exports = app => {
     });
 
     // create drawings
-    app.post('/api/drawings', async (req, res) => {
+    app.post('/api/drawings', requireLogin, async (req, res) => {
         const newDrawing = await db.Drawing.create({
             UserId: req.user.dataValues.id,
             title: req.body.title,
@@ -21,7 +22,7 @@ module.exports = app => {
     });
 
     // updates a drawing
-    app.put('/api/drawings/:id', async (req, res) => {
+    app.put('/api/drawings/:id', requireLogin, async (req, res) => {
         const drawing = await db.Drawing.update(req.body, {
             where: {
                 id: req.body.id,
@@ -31,7 +32,7 @@ module.exports = app => {
     });
 
     //delete a drawing
-    app.delete('/api/drawings/:id', (req, res) => {
+    app.delete('/api/drawings/:id', requireLogin, (req, res) => {
         const drawing = db.Drawings.destroy({
             where: {
                 id: req.params.id,
