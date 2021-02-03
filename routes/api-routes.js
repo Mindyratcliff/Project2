@@ -1,5 +1,5 @@
 const db = require('../models');
-const requireLogin = require('./middleware/requireLogin');
+const requireLogin = require('./../middleware/requireLogin');
 
 module.exports = app => {
     // fetch the drawings
