@@ -1,7 +1,4 @@
 // creating and naming new list items.
-$('#drawing-list').click(() => {
-    $('#drawing-list').append('<div>Fire</div>');
-});
 $('#saveButton').click(() => {
     const title = prompt('What is the file\'s title?').trim();
     const body = window._json;
