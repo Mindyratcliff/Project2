@@ -12,11 +12,18 @@
         <div class="card">
           <ul class="list-group">
               <!--List will be populated with names of drawings-->
+              {{#each Drawing}}
+              <li class="list-group-item">
+                <span>{{this.name}}</span>
+                <i class='fas fa-trash-alt float-right text-danger delete-note' data-id="{{this.id}}"></i>
+              </li>
+              {{/each}}
           </ul>
         </div>
       </div>
       <div class="canvas col-8">
         <input class="note-title" placeholder="Drawing Title" maxlength="28" type="text">
+        <!--Need to determine the size of canvas to be used-->
         <canvas class="note-textarea" id="" width="" height=""></canvas>
       </div>
     </div>
