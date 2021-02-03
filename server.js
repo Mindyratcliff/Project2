@@ -1,7 +1,7 @@
 const express = require('express');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
-const exphbs = require('express-handelbars');
+const exphbs = require('express-handlebars');
 
 // Sets up the Express App
 const app = express();
@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 const keys = require('./config/keys');
 
 // set up express app to use handlebars
-app.engine('handlebars', exphbs({ defaultLayout: "main" }));
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 // Requiring our models for syncing
