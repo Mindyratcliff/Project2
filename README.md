@@ -1,4 +1,7 @@
-# Project2
+# Happy Trees
+
+![Logo](https://github.com/Mindyratcliff/Project2/blob/main/public/assets/images/Happy%20Trees.jpg)
+
 ![Languages](https://img.shields.io/github/languages/count/mindyratcliff/project2) ![Language](https://img.shields.io/github/languages/top/Mindyratcliff/Project2) ![MySQL](https://img.shields.io/badge/dependency-mysql-blue) ![Node](https://img.shields.io/badge/dependency-node-brightgreen) 
 
 ## Table of Contents
@@ -137,9 +140,13 @@ For answers to common questions about this code of conduct, see the FAQ at https
 The owners of this repository are in no particular order:
 
 Abdinajib Liban - abdinajibliban - abdinajibliban@gmail.com
+
 Kole Gasior - jkole822 - jkole822@gmail.com
+
 Efraín González -jesusefraingonzalez - jesusgonzalez0797@gmail.com
+
 Mindy Ratcliff - mindyratcliff - mindy.ratcliff@gmail.com
+
 Simon Ziccardi - sziccardi1998 - sziccardifullstack@gmail.com
 
 
