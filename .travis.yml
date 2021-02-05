@@ -5,9 +5,15 @@ node_js:
 services:
   - mysql
 
-script: 
-
+scripts: { 
   npm install
+  node server.js
+  mocha
+}
 
 cache: npm
+
+test: mocha
+
+
 
