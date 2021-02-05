@@ -1,19 +1,14 @@
 language: node_js
-node_js:
-  "14"
-
+node_js: "14"
+branches:
+  only:
+    - master
+    - main
+cache:
+  directories:
+    - node_modules
 services:
   - mysql
-
-scripts: { 
-  npm install
-  node server.js
-  mocha
-}
-
-cache: npm
-
-test: mocha
-
-
+before_install:
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS drawings_db;'
 
