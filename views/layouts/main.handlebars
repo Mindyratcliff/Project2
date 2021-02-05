@@ -77,7 +77,11 @@
         console.log(window._json);
         // -- textItem.content = difference + ' of the ' + segmentCount + ' segments were removed. Saving ' + percentage + '%';
         }
-       
+
+        document.addEventListener('build', function() {
+            project.clear()
+            project.importJSON(window._json)
+        })
     </script>
 </head>
 
@@ -85,6 +89,17 @@
     {{{ body }}}
     <!-- Main script for JS code -->
     <script type="text/javascript" src="./assets/js/index.js"></script>
+    <script>
+        const build = new Event('build');
+        $(document).on('click', '#drawing-list li', function () {
+            const id = $(this).attr('data-id')
+            console.log(id)
+            $.get(`/api/drawings/${id}`, (data) => {
+                window._json = data.body
+                document.dispatchEvent(build)
+            })
+        })
+    </script>
 </body>
 
 </html>
