@@ -20,10 +20,9 @@ $('#saveButton').click(() => {
 });
 
 //deleting list item
-$('.delete-note').on('click', function () {
+$(document).on('click', '.delete-note', function () {
     let drawing = this.parentNode.dataset.id;
     console.log(drawing);
-
 
     // need a delete request
     $.ajax({
