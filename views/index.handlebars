@@ -13,7 +13,7 @@
           <ul class="list-group">
               <!--List will be populated with names of drawings-->
               {{#each Drawing}}
-              <li class="list-group-item">
+              <li class="list-group-item" data-title="{{drawing}}">
                 <span>{{this.name}}</span>
                 <i class='fas fa-trash-alt float-right text-danger delete-note' data-id="{{this.id}}"></i>
               </li>

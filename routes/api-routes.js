@@ -56,7 +56,7 @@ module.exports = app => {
 
     //delete a drawing
     app.delete('/api/drawings/:id', requireLogin, (req, res) => {
-        const drawing = db.Drawings.destroy({
+        const drawing = db.Drawing.destroy({
             where: {
                 id: req.params.id,
             },
