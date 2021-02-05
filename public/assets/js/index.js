@@ -20,10 +20,15 @@ $('#saveButton').click(() => {
 });
 
 //deleting list item
-$('.delete-note').on('click', () => {
-    console.log(this);
+$('.delete-note').on('click', function () {
+    let drawing = this.parentNode.dataset.id;
+    console.log(drawing);
+
+
     // need a delete request
+    $.ajax({
+        url: '/api/drawings/' + drawing,
+        type: 'DELETE',
+    }).then(console.log(drawing+ ' deleted'));
 });
-
-
-// var dataURL = canvas.toDataURL(); // this code will be used to save canvas as an image (png file).
+// var dataURL = canvas.toDataURL(); // this code will be used to save canvas as an image (png file)
