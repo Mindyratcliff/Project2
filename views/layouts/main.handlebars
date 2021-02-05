@@ -73,14 +73,18 @@
         var difference = segmentCount - newSegmentCount;
         var percentage = 100 - Math.round(newSegmentCount / segmentCount * 100);
         window._json = project.exportJSON();
-        console.log(window._json);
         // -- textItem.content = difference + ' of the ' + segmentCount + ' segments were removed. Saving ' + percentage + '%';
         }
 
-        document.addEventListener('build', function() {
-            project.clear()
-            project.importJSON(window._json)
+        document.addEventListener('load-image', function () {
+            project.clear();
+            project.importJSON(window._json);
         })
+
+        document.addEventListener('clear-canvas', function() {
+            project.clear();
+        })
+
     </script>
 </head>
 
@@ -89,13 +93,16 @@
     <!-- Main script for JS code -->
     <script type="text/javascript" src="./assets/js/index.js"></script>
     <script>
-        const build = new Event('build');
+        const loadImage = new Event('load-image');
         $(document).on('click', '#drawing-list li', function () {
-            const id = $(this).attr('data-id')
-            console.log(id)
+            const id = $(this).attr('data-id');
+
+            sessionStorage.setItem('edit', true);
+            sessionStorage.setItem('current-drawing', id);
+
             $.get(`/api/drawings/${id}`, (data) => {
-                window._json = data.body
-                document.dispatchEvent(build)
+                window._json = data.body;
+                document.dispatchEvent(loadImage);
             })
         })
     </script>
