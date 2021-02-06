@@ -6,6 +6,11 @@ module.exports = app => {
         res.render('landing');
     });
 
+    app.get('/home', (req, res) => {
+        res.render('canvas');
+    });
+    
+
     app.get('/dashboard', requireLogin, async (req, res) => {
         const drawings = await db.Drawing.findAll({
             where: { UserId: req.user.dataValues.id },

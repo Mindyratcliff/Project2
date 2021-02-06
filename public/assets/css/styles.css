@@ -3,27 +3,32 @@ a.navbar-brand{
     /* background-color: #00ffff; */
     margin: 0 auto;
     font-size: 70pt;
+    text-align: center;
+    width: fit-content;
 }
 div.row1 {
     height: 80rem;
 }
 
-ol {
-    padding: 20px;
+li {
+    /* padding: 20px; */
+    
 }
 .fa-trash-alt {
     font-size: 40px;
+    float: right;
 }
-ol#myList > li{
-    border: 3px solid black;
-    border-radius: 30px;
+ li.list-group-item{
+    border-bottom: 3px solid black;
+    /* border-radius: 50px; */
     margin-bottom: 5px;
     padding: 15px;
     height: 80px;
     vertical-align: middle;
-}
-ol#myList > li :hover {
-    background-color: aqua;
+ }
+ul#drawing-list {
+    overflow: auto;
+    height: 590px;;
 }
 #main {
     /* background-color:rgb(138, 146, 138);  */
@@ -34,38 +39,42 @@ canvas#myCanvas {
 }
 button.btn {
     margin-bottom: 20px;
+    margin-left: 50px;
     width: 100px;
     
 } 
-div.myButton{
+div.myButtons{
     display: flex;
+    height: none;
     justify-content:center;
-    align-items: center;
+    align-content: center;
     
-
+    margin-top: 15rem;
 }
 
 a.navbar-brand > span.title {
     font-family: 'Potta One', cursive;
     color: orange;
+    text-shadow: 0.4px 3px 8px black;
  
 }
 /* ----------------------- tsting below -----------------*/
 
 body {
     color: #000;
-    overflow-x: hidden;
-    height: 100%;
+    max-width: 1000px;
     background-color: #B0BEC5;
-    background-repeat: no-repeat
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    padding-left: 10px;
 }
 div.container-fluid {
-    margin: 0 auto;
+   margin: 0px auto;
 }
 div.text-center {
     width: 30px;
     float: right;
-}
+} 
 
 .card0 {
     box-shadow: 0px 4px 8px 0px #757575;
