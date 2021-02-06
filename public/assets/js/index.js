@@ -1,7 +1,9 @@
 $(document).ready(() => sessionStorage.setItem('edit', false));
+const loadImage = new Event('load-image');
+const clearCanvas = new Event('clear-canvas');
+
 // creating and naming new list items.
 $('#saveButton').click(() => {
-    const clearCanvas = new Event('clear-canvas');
     const title = $('#drawing-title').val().trim();
     const body = window._json;
 
@@ -59,5 +61,18 @@ $(document).on('click', '.delete-note', function (event) {
         listEl.remove();
     });
 
+});
+
+$(document).on('click', '#drawing-list li', function () {
+    const id = $(this).attr('data-id');
+    const saveButton = $('#save-drawing');
+    saveButton.text('Update');
+    sessionStorage.setItem('edit', true);
+    sessionStorage.setItem('current-drawing', id);
+
+    $.get(`/api/drawings/${id}`, (data) => {
+        window._json = data.body;
+        document.dispatchEvent(loadImage);
+    });
 });
 // var dataURL = canvas.toDataURL(); // this code will be used to save canvas as an image (png file)
