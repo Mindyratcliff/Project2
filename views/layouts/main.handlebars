@@ -25,7 +25,6 @@
 
     <!-- PaperJs Canvas and Script -->
     <script type="text/javascript" src="./paperjs/docs/assets/js/paper.js"></script>
-
     <script type="text/paperscript" canvas="myCanvas" data-paper-ingore="true">
         var path;
 
@@ -74,10 +73,18 @@
         var difference = segmentCount - newSegmentCount;
         var percentage = 100 - Math.round(newSegmentCount / segmentCount * 100);
         window._json = project.exportJSON();
-        console.log(window._json);
         // -- textItem.content = difference + ' of the ' + segmentCount + ' segments were removed. Saving ' + percentage + '%';
         }
-       
+
+        document.addEventListener('load-image', function () {
+            project.clear();
+            project.importJSON(window._json);
+        })
+
+        document.addEventListener('clear-canvas', function() {
+            project.clear();
+        })
+
     </script>
 </head>
 
@@ -85,6 +92,20 @@
     {{{ body }}}
     <!-- Main script for JS code -->
     <script type="text/javascript" src="./assets/js/index.js"></script>
+    <script>
+        const loadImage = new Event('load-image');
+        $(document).on('click', '#drawing-list li', function () {
+            const id = $(this).attr('data-id');
+
+            sessionStorage.setItem('edit', true);
+            sessionStorage.setItem('current-drawing', id);
+
+            $.get(`/api/drawings/${id}`, (data) => {
+                window._json = data.body;
+                document.dispatchEvent(loadImage);
+            })
+        })
+    </script>
 </body>
 
 </html>

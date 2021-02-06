@@ -2,7 +2,7 @@
 
 ![Logo](https://github.com/Mindyratcliff/Project2/blob/main/public/assets/images/Happy%20Trees.jpg)
 
-![Languages](https://img.shields.io/github/languages/count/mindyratcliff/project2) ![Language](https://img.shields.io/github/languages/top/Mindyratcliff/Project2) ![MySQL](https://img.shields.io/badge/dependency-mysql-blue) ![Node](https://img.shields.io/badge/dependency-node-brightgreen) 
+![Languages](https://img.shields.io/github/languages/count/mindyratcliff/project2) ![Language](https://img.shields.io/github/languages/top/Mindyratcliff/Project2) ![MySQL](https://img.shields.io/badge/dependency-mysql-blue) ![Node](https://img.shields.io/badge/dependency-node-brightgreen) ![Travis](https://travis-ci.com/Mindyratcliff/Project2.svg?branch=main)
 
 ## Table of Contents
 1.) [Usage](#usage)
