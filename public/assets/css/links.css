@@ -1,0 +1,21 @@
+a:hover {
+    color: darkgreen;
+}
+
+a:active{
+    color: darkgreen;
+}
+
+.alert-link {
+    text-decoration: none;
+    color:#7ed956;
+    font-size:larger
+}
+
+.alert-link:active {
+    color: darkgreen;
+}
+
+.alert-link:hover {
+    color: darkgreen;
+}

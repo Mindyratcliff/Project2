@@ -15,12 +15,12 @@ $('#saveButtonModal').click(() => {
             const $li = $('<li>')
                 .addClass('list-group-item')
                 .attr('data-id', data.id);
-            const $span = $('<span>').text(title);
+            const $a = $('<a>').text(title).attr("href", "#").attr("class", "alert-link")
             const $i = $('<i>')
-                .addClass('fas fa-trash-alt float-right text-danger delete-note')
+                .addClass('fas fa-trash-alt float-right text-secondary delete-note')
                 .attr('data-id', data.id);
 
-            $li.append($span).append($i);
+            $li.append($a).append($i);
             $('#drawing-list').append($li);
 
             document.dispatchEvent(clearCanvas);
