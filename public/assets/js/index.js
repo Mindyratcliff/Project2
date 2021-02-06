@@ -16,12 +16,14 @@ $('#saveButtonModal').click(() => {
             const $li = $('<li>')
                 .addClass('list-group-item')
                 .attr('data-id', data.id);
-            const $span = $('<span>').text(title);
+            const $a = $('<a>').text(title).attr("href", "#").attr("class", "alert-link");
+            const $a2 = $('<a>').attr('href', '#');
             const $i = $('<i>')
-                .addClass('fas fa-trash-alt float-right text-danger delete-note')
+                .addClass('fas fa-trash-alt float-right text-secondary delete-note')
                 .attr('data-id', data.id);
 
-            $li.append($span).append($i);
+                $a2.append($i);
+            $li.append($a).append($a2);
             $('#drawing-list').append($li);
 
             document.dispatchEvent(clearCanvas);
@@ -34,7 +36,7 @@ $('#saveButtonModal').click(() => {
             data: { title, body },
             type: 'PUT',
         }).then(() => {
-            $(`[data-id=${id}]`).children('span').text(title);
+            $(`[data-id=${id}]`).children('a.alert-link').text(title);
             sessionStorage.setItem('edit', false);
             document.dispatchEvent(clearCanvas);
         });
@@ -52,8 +54,10 @@ $('#clearButton').click(() => {
 //deleting list item
 $(document).on('click', '.delete-note', function (event) {
     event.stopPropagation();
-    let drawingId = this.parentNode.dataset.id;
-    let listEl = $(this.parentNode);
+
+    let drawingId = this.dataset.id;
+    let listEl = this.parentElement.parentElement;
+    console.log(listEl);
 
     // need a delete request
     $.ajax({

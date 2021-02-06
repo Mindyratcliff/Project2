@@ -3,68 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Trees </title>
-    <link rel="stylesheet" href="./public/assets/css/styles.css"> 
+    <title>Document</title>
+    <link rel="stylesheet" href="public/assets/css/styles.css">
     <!-- bootstrap links -->
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <!-- jquery cdn -->
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <!-- font awesome link for trash icon -->
+   <!-- font awesome link for trash icon -->
    <script type="text/javascript" src="./paperjs/docs/assets/js/paper.js"></script>
    
    <script type="text/paperscript" canvas= "myCanvas" data-paper-ingore="true">
-        var path;
+    var path;
+    
 
-        var textItem = new PointText({
-        content: 'Click and drag to draw your work of Art.',
-        point: new Point(30, 40),
+    var textItem = new PointText({
+        content: 'Click and drag to draw a line.',
+        point: new Point(20, 30),
         fillColor: 'black',
-        });
-        
-        function onMouseDown(event) {
+    });
+    
+    function onMouseDown(event) {
         // If we produced a path before, deselect it:
         if (path) {
             path.selected = false;
         }
-        
+    
         // Create a new path and set its stroke color to black:
         path = new Path({
             segments: [event.point],
             strokeColor: 'black',
             // Select the path, so we can see its segment points:
-            fullySelected: false
+            fullySelected: true
         });
-        }
-        
-        // While the user drags the mouse, points are added to the path
-        // at the position of the mouse:
-        function onMouseDrag(event) {
+    }
+    
+    // While the user drags the mouse, points are added to the path
+    // at the position of the mouse:
+    function onMouseDrag(event) {
         path.add(event.point);
-        
+    
         // Update the content of the text item to show how many
         // segments it has:
-        // -- textItem.content = 'Segment count: ' + path.segments.length;
-        }
-        
-        // When the mouse is released, we simplify the path:
-        function onMouseUp(event) {
+        textItem.content = 'Segment count: ' + path.segments.length;
+    }
+    
+    // When the mouse is released, we simplify the path:
+    function onMouseUp(event) {
         var segmentCount = path.segments.length;
-        
+    
         // When the mouse is released, simplify it:
         path.simplify(10);
-        
+    
         // Select the path, so we can see its segments:
-        path.fullySelected = false;
-        
+        path.fullySelected = true;
+    
         var newSegmentCount = path.segments.length;
         var difference = segmentCount - newSegmentCount;
         var percentage = 100 - Math.round(newSegmentCount / segmentCount * 100);
-        // -- textItem.content = difference + ' of the ' + segmentCount + ' segments were removed. Saving ' + percentage + '%';
-        }
-</script>   
-    
-
+        textItem.content = difference + ' of the ' + segmentCount + ' segments were removed. Saving ' + percentage + '%';
+        localStorage.setItem('drawing',JSON.stringify(project.exportJSON()));
+        console.log(localStorage.getItem('drawing'));
+        console.log(JSON.parse(localStorage.getItem('drawing')));
+    }
+</script>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
     crossorigin="anonymous">
@@ -80,7 +80,7 @@
         <div class="container-fluid">
             <a class="navbar-brand " href="#">
                 <span class="title">Happy</span>
-                <img src="./Happy Trees.jpg" alt="logo" width="200" height="200" class="align-middle">
+                <img src="./burger2.jpeg" alt="logo" width="200" height="200" class="align-middle">
                 <span class="title">Trees</span>
             </a>
         </div>
@@ -105,18 +105,16 @@
                 <!-- our save and clear buttons for paperjs -->
                 <div class="myButton col">
                     <div>
-                        <button type="button" id="saveButton" class="save btn btn-success">Save</button>
+                        <button type="button" class="save btn btn-success">Save</button>
                     </div>
                     <div>
-                        <button type="button" id="clearButton" class="clear btn btn-warning"> Clear</button>
+                        <button type="button" class="clear btn btn-warning"> Clear</button>
                     </div>
                     
                 </div>
             </div>
         </div>
     </div>
-
-    <script type="text/javascript" src="/public/assets/js/index.js"></script>
 
     
 </body>
