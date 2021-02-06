@@ -44,14 +44,20 @@ $('#clearButton').click(() => {
 });
 
 //deleting list item
-$(document).on('click', '.delete-note', function () {
-    let drawing = this.parentNode.dataset.id;
-    console.log(drawing);
+$(document).on('click', '.delete-note', function (event) {
+    event.stopPropagation();
+    let drawingId = this.parentNode.dataset.id;
+    let listEl = $(this.parentNode);
+    console.log(listEl);
 
     // need a delete request
     $.ajax({
-        url: '/api/drawings/' + drawing,
+        url: '/api/drawings/' + drawingId,
         type: 'DELETE',
-    }).then(console.log(drawing + ' deleted'));
+    }).then(() => {
+        console.log(drawingId + ' deleted');
+        listEl.remove();
+    });
+
 });
 // var dataURL = canvas.toDataURL(); // this code will be used to save canvas as an image (png file)
