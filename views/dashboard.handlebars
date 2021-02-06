@@ -13,12 +13,13 @@
 <div class="row">
     <!-- our side bar saved list items. with the delete icons -->
     <div class="sidebar col-3">
+        <h2 style="margin-left: 8%;">Saved Work</h2>
         <ul id="drawing-list" class="list-group">
             <!--list items will be created dynamically with jquery-->
             {{#each drawings}}
             <li class="list-group-item" data-id="{{this.dataValues.id}}" data-title="{{this.dataValues.title}}">
-                <span>{{this.dataValues.title}}</span>
-                <i class='fas fa-trash-alt float-right text-danger delete-note' data-id="{{this.dataValues.id}}"></i>
+                <a href="#" class="alert-link">{{this.dataValues.title}}</a>
+                <i class='fas fa-trash-alt float-right text-secondary delete-note' data-id="{{this.dataValues.id}}"></i>
             </li>
             {{/each}}
         </ul>
