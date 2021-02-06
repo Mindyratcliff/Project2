@@ -35,7 +35,7 @@ $('#saveButtonModal').click(() => {
             data: { title, body },
             type: 'PUT',
         }).then(() => {
-            $(`[data-id=${id}]`).children('span').text(title);
+            $(`[data-id=${id}]`).children('a.alert-link').text(title);
             sessionStorage.setItem('edit', false);
             document.dispatchEvent(clearCanvas);
         });
