@@ -10,7 +10,7 @@
   <div class="row">
     <div class="col-4 list-container">
       <div class="card">
-        <ul data-id='test' id='drawing-list' class="list-group">
+        <ul id='drawing-list' class="list-group">
           <!--List will be populated with names of drawings-->
           {{#each drawings}}
           <li class="list-group-item" data-id="{{this.dataValues.id}}" data-title="{{this.dataValues.title}}">
@@ -27,5 +27,6 @@
       <canvas class="drawing-area" id="myCanvas" width="500" height="500"></canvas>
     </div>
     <button id="saveButton">Save</button>
+    <button id="clearButton">Clear</button>
   </div>
 </div>
