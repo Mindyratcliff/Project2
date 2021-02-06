@@ -16,14 +16,16 @@
         <ul id="drawing-list" class="list-group">
             <!--list items will be created dynamically with jquery-->
             {{#each drawings}}
+
                 <li class="list-group-item" data-id="{{this.dataValues.id}}" data-title="{{this.dataValues.title}}">
                     <span>{{this.dataValues.title}}</span>
                     <i class='fas fa-trash-alt float-right text-secondary delete-note' data-id="{{this.dataValues.id}}"></i>
                 </li>
+
             {{/each}}
         </ul>
     </div>
-    
+
     <!-- our canvas from paperjs  -->
     <div class="art col-6" id="main">
         <div class="canvas col">
@@ -33,9 +35,29 @@
 
     <!-- our save and clear buttons for paperjs -->
     <div class="col-3 myButtons">
-        <div >
-            <button type="button" id="saveButton" class="save btn btn-success">Save</button>
+        <div>
+            <button type="button" class="save btn btn-success" data-bs-toggle="modal"
+                data-bs-target="#titleModal">Save</button>
             <button type="button" id="clearButton" class="clear btn btn-warning"> Clear</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="titleModal" tabindex="-1" aria-labelledby="titleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="titleModalLabel">Drawing Title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input id='drawing-title' class='input-group' autocomplete='off' />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button id='saveButton' type="button" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+            </div>
         </div>
     </div>
 </div>
