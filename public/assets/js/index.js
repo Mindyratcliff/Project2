@@ -2,10 +2,11 @@ $(document).ready(() => sessionStorage.setItem('edit', false));
 const loadImage = new Event('load-image');
 const clearCanvas = new Event('clear-canvas');
 const saveButton = $('#save-drawing');
+const titleEl = $('#drawing-title');
 
 // creating and naming new list items.
 $('#saveButtonModal').click(() => {
-    const title = $('#drawing-title').val().trim();
+    const title = titleEl.val().trim();
     const body = window._json;
 
     const editMode = sessionStorage.getItem('edit');
@@ -29,7 +30,7 @@ $('#saveButtonModal').click(() => {
         });
     } else if (editMode) {
         const id = sessionStorage.getItem('current-drawing');
-
+        console.log(id);
         $.ajax({
             url: `/api/drawings/${id}`,
             data: { title, body },
@@ -40,6 +41,7 @@ $('#saveButtonModal').click(() => {
             document.dispatchEvent(clearCanvas);
         });
     }
+    titleEl.val('');
 });
 
 $('#clearButton').click(() => {
@@ -52,6 +54,7 @@ $('#clearButton').click(() => {
 //deleting list item
 $(document).on('click', '.delete-note', function (event) {
     event.stopPropagation();
+
     let drawingId = this.dataset.id;
     let listEl = this.parentElement.parentElement;
     console.log(listEl);
