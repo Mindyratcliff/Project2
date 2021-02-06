@@ -2,7 +2,7 @@ $(document).ready(() => sessionStorage.setItem('edit', false));
 // creating and naming new list items.
 $('#saveButton').click(() => {
     const clearCanvas = new Event('clear-canvas');
-    const title = prompt('What is the file\'s title?').trim();
+    const title = $('#drawing-title').val().trim();
     const body = window._json;
 
     const editMode = sessionStorage.getItem('edit');
