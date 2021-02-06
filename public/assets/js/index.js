@@ -1,9 +1,10 @@
 $(document).ready(() => sessionStorage.setItem('edit', false));
 const loadImage = new Event('load-image');
 const clearCanvas = new Event('clear-canvas');
+const saveButton = $('#save-drawing');
 
 // creating and naming new list items.
-$('#saveButton').click(() => {
+$('#saveButtonModal').click(() => {
     const title = $('#drawing-title').val().trim();
     const body = window._json;
 
@@ -42,6 +43,7 @@ $('#saveButton').click(() => {
 $('#clearButton').click(() => {
     const clearCanvas = new Event('clear-canvas');
     document.dispatchEvent(clearCanvas);
+    saveButton.text('Save');
     sessionStorage.setItem('edit', false);
 });
 
@@ -65,7 +67,6 @@ $(document).on('click', '.delete-note', function (event) {
 
 $(document).on('click', '#drawing-list li', function () {
     const id = $(this).attr('data-id');
-    const saveButton = $('#save-drawing');
     saveButton.text('Update');
     sessionStorage.setItem('edit', true);
     sessionStorage.setItem('current-drawing', id);
