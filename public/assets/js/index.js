@@ -52,8 +52,8 @@ $('#clearButton').click(() => {
 //deleting list item
 $(document).on('click', '.delete-note', function (event) {
     event.stopPropagation();
-    let drawingId = this.parentNode.dataset.id;
-    let listEl = $(this.parentNode);
+    let drawingId = this.dataset.id;
+    let listEl = this.parentElement.parentElement;
     console.log(listEl);
 
     // need a delete request
