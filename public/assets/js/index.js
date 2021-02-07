@@ -8,28 +8,11 @@ const titleEl = $('#drawing-title');
 $('#saveButtonModal').click(() => {
     const title = titleEl.val().trim();
     const body = window._json;
-
     const editMode = sessionStorage.getItem('edit');
 
     if (editMode !== 'true') {
         $.post('/api/drawings', { title, body }).then(data => {
-            const $li = $('<li>')
-                .addClass('list-group-item')
-                .attr('data-id', data.id);
-            const $a = $('<a>')
-                .text(title)
-                .attr('href', '#')
-                .attr('class', 'alert-link');
-            const $a2 = $('<a>')
-                .attr('href', '#');
-            const $i = $('<i>')
-                .addClass('fas fa-trash-alt float-right text-secondary delete-note')
-                .attr('data-id', data.id);
-
-            $a2.append($i);
-            $li.append($a).append($a2);
-            $('#drawing-list').append($li);
-
+            createElement(data.title, data.id);
             document.dispatchEvent(clearCanvas);
         });
     } else if (editMode) {
@@ -85,3 +68,22 @@ $(document).on('click', '#drawing-list li', function () {
         document.dispatchEvent(loadImage);
     });
 });
+
+const createElement = function(title, id){
+    const $li = $('<li>')
+        .addClass('list-group-item')
+        .attr('data-id', id);
+    const $a = $('<a>')
+        .text(title)
+        .attr('href', '#')
+        .attr('class', 'alert-link');
+    const $a2 = $('<a>')
+        .attr('href', '#');
+    const $i = $('<i>')
+        .addClass('fas fa-trash-alt float-right text-secondary delete-note')
+        .attr('data-id', id);
+
+    $a2.append($i);
+    $li.append($a).append($a2);
+    $('#drawing-list').append($li);
+};
