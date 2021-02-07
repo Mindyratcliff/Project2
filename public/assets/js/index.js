@@ -50,6 +50,8 @@ $(document).on('click', '.delete-note', (event) => {
         type: 'DELETE',
     }).then(() => {
         listEl.remove();
+        document.dispatchEvent(clearCanvas);
+        setSession(false);
     });
 
 });
