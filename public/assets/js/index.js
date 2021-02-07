@@ -5,7 +5,7 @@ const saveButton = $('#save-drawing');
 const titleEl = $('#drawing-title');
 
 // creating and naming new list items.
-$('#saveButtonModal').on('click' , () => {
+$('#saveButtonModal').on('click', () => {
     const title = titleEl.val().trim();
     const body = window._json;
     const editMode = sessionStorage.getItem('edit');
@@ -66,7 +66,7 @@ $(document).on('click', '#drawing-list li', function () {
     });
 });
 
-const createElement = function(title, id){
+const createElement = function (title, id) {
     const $li = $('<li>')
         .addClass('list-group-item')
         .attr('data-id', id)
@@ -87,22 +87,32 @@ const createElement = function(title, id){
     $('#drawing-list').append($li);
 };
 
+const updateElement = (element, title, id) => {
+    let $element = $(element);
+    $element
+        .attr('data-id', id)
+        .attr('data-title', title);
+};
+
 const setSession = (edit, title, id) => {
     sessionStorage.setItem('edit', edit);
 
-    if(edit){
-        sessionStorage.setItem('current-title', title);
-        sessionStorage.setItem('current-drawing', id);
-        saveButton.text('Update');
-    } else if(!edit && title && id){
-        sessionStorage.setItem('current-title', title);
-        sessionStorage.setItem('current-drawing', id);
-        saveButton.text('Save');
-    } else if(title || id){
+    if (title || id) {
         console.error('setSession() cannot have only a title or only an id. Must have both or none');
-    } else{
+    } else if (edit) {
+        sessionStorage.setItem('current-title', title);
+        sessionStorage.setItem('current-drawing', id);
+        titleEl.val(title);
+        saveButton.text('Update');
+    } else if (!edit && title && id) {
+        sessionStorage.setItem('current-title', title);
+        sessionStorage.setItem('current-drawing', id);
+        titleEl.val('');
+        saveButton.text('Save');
+    } else {
         sessionStorage.setItem('current-title', null);
         sessionStorage.setItem('current-drawing', null);
+        titleEl.val('');
         saveButton.text('Save');
     }
 };
