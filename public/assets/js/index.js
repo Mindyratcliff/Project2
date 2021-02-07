@@ -16,13 +16,17 @@ $('#saveButtonModal').click(() => {
             const $li = $('<li>')
                 .addClass('list-group-item')
                 .attr('data-id', data.id);
-            const $a = $('<a>').text(title).attr("href", "#").attr("class", "alert-link");
-            const $a2 = $('<a>').attr('href', '#');
+            const $a = $('<a>')
+                .text(title)
+                .attr('href', '#')
+                .attr('class', 'alert-link');
+            const $a2 = $('<a>')
+                .attr('href', '#');
             const $i = $('<i>')
                 .addClass('fas fa-trash-alt float-right text-secondary delete-note')
                 .attr('data-id', data.id);
 
-                $a2.append($i);
+            $a2.append($i);
             $li.append($a).append($a2);
             $('#drawing-list').append($li);
 
@@ -81,4 +85,3 @@ $(document).on('click', '#drawing-list li', function () {
         document.dispatchEvent(loadImage);
     });
 });
-// var dataURL = canvas.toDataURL(); // this code will be used to save canvas as an image (png file)
