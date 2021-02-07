@@ -9,6 +9,7 @@ passport.use(
             clientID: keys.facebookClientID,
             clientSecret: keys.facebookClientSecret,
             callbackURL: '/auth/facebook/callback',
+            proxy: true,
         },
         async (accessToken, refreshToken, profile, done) => {
             const id = profile.id;
