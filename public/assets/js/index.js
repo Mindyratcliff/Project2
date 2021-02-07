@@ -24,7 +24,7 @@ $('#saveButtonModal').on('click' , () => {
             type: 'PUT',
         }).then(() => {
             $(`[data-id=${id}]`).children('a.alert-link').text(title);
-            setEdit(false);
+            setSession(false);
             document.dispatchEvent(clearCanvas);
         });
     }
@@ -33,7 +33,7 @@ $('#saveButtonModal').on('click' , () => {
 
 $('#clearButton').on('click', () => {
     const clearCanvas = new Event('clear-canvas');
-    setEdit(false);
+    setSession(false);
     document.dispatchEvent(clearCanvas);
 });
 
@@ -58,7 +58,7 @@ $(document).on('click', '#drawing-list li', function () {
     const id = $(this).attr('data-id');
     const title = $(this).attr('data-title');
 
-    setEdit(true, title, id);
+    setSession(true, title, id);
 
     $.get(`/api/drawings/${id}`, (data) => {
         window._json = data.body;
@@ -69,7 +69,8 @@ $(document).on('click', '#drawing-list li', function () {
 const createElement = function(title, id){
     const $li = $('<li>')
         .addClass('list-group-item')
-        .attr('data-id', id);
+        .attr('data-id', id)
+        .attr('data-title', title);
     const $a = $('<a>')
         .text(title)
         .attr('href', '#')
@@ -78,20 +79,25 @@ const createElement = function(title, id){
         .attr('href', '#');
     const $i = $('<i>')
         .addClass('fas fa-trash-alt float-right text-secondary delete-note')
-        .attr('data-id', id);
+        .attr('data-id', id)
+        .attr('data-title', title);
 
     $a2.append($i);
     $li.append($a).append($a2);
     $('#drawing-list').append($li);
 };
 
-const setEdit = (edit, title, id) => {
+const setSession = (edit, title, id) => {
     sessionStorage.setItem('edit', edit);
 
     if(edit){
         sessionStorage.setItem('current-title', title);
         sessionStorage.setItem('current-drawing', id);
         saveButton.text('Update');
+    } else if(!edit && title && id){
+        sessionStorage.setItem('current-title', title);
+        sessionStorage.setItem('current-drawing', id);
+        saveButton.text('Save');
     } else{
         sessionStorage.setItem('current-title', null);
         sessionStorage.setItem('current-drawing', null);
