@@ -17,7 +17,7 @@ $('#saveButtonModal').click(() => {
         });
     } else if (editMode) {
         const id = sessionStorage.getItem('current-drawing');
-        console.log(id);
+
         $.ajax({
             url: `/api/drawings/${id}`,
             data: { title, body },
@@ -44,14 +44,12 @@ $(document).on('click', '.delete-note', function (event) {
 
     let drawingId = this.dataset.id;
     let listEl = this.parentElement.parentElement;
-    console.log(listEl);
 
     // need a delete request
     $.ajax({
         url: '/api/drawings/' + drawingId,
         type: 'DELETE',
     }).then(() => {
-        console.log(drawingId + ' deleted');
         listEl.remove();
     });
 
