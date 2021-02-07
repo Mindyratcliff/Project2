@@ -98,6 +98,8 @@ const setSession = (edit, title, id) => {
         sessionStorage.setItem('current-title', title);
         sessionStorage.setItem('current-drawing', id);
         saveButton.text('Save');
+    } else if(title || id){
+        console.error('setSession() cannot have only a title or only an id. Must have both or none');
     } else{
         sessionStorage.setItem('current-title', null);
         sessionStorage.setItem('current-drawing', null);
