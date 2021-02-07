@@ -87,6 +87,7 @@ const createElement = function (title, id) {
     $('#drawing-list').append($li);
 };
 
+// updates an element's data-title and data-id
 const updateElement = (element, title, id) => {
     let $element = $(element);
     $element
