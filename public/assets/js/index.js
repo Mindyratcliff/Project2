@@ -50,6 +50,12 @@ $(document).on('click', '.delete-note', (event) => {
         type: 'DELETE',
     }).then(() => {
         listEl.remove();
+
+        // if the current active drawing is deleted, clear the canvas and change the session values
+        if(drawingId === sessionStorage.getItem('current-drawing')){
+            document.dispatchEvent(clearCanvas);
+            setSession(false);
+        }
     });
 
 });
