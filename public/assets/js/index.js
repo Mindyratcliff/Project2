@@ -38,11 +38,11 @@ $('#clearButton').on('click', () => {
 });
 
 //deleting list item
-$(document).on('click', '.delete-note', function (event) {
+$(document).on('click', '.delete-note', (event) => {
     event.stopPropagation();
-
-    let drawingId = this.dataset.id;
-    let listEl = this.parentElement.parentElement;
+    let $this = event.currentTarget;
+    let drawingId = $this.dataset.id;
+    let listEl = $this.parentElement.parentElement;
 
     //delete request
     $.ajax({
@@ -54,9 +54,10 @@ $(document).on('click', '.delete-note', function (event) {
 
 });
 
-$(document).on('click', '#drawing-list li', function () {
-    const id = $(this).attr('data-id');
-    const title = $(this).attr('data-title');
+$(document).on('click', '#drawing-list li', (event) => {
+    let $this = $(event.currentTarget);
+    const id = $this.attr('data-id');
+    const title = $this.attr('data-title');
 
     setSession(true, title, id);
 
@@ -66,7 +67,7 @@ $(document).on('click', '#drawing-list li', function () {
     });
 });
 
-const createElement = function (title, id) {
+const createElement = (title, id) => {
     const $li = $('<li>')
         .addClass('list-group-item')
         .attr('data-id', id)
@@ -98,7 +99,7 @@ const updateElement = (element, title, id) => {
 const setSession = (edit, title, id) => {
     sessionStorage.setItem('edit', edit);
 
-    if (title || id) {
+    if ((title && !id) || (!title && id) ) {
         console.error('setSession() cannot have only a title or only an id. Must have both or none');
     } else if (edit) {
         sessionStorage.setItem('current-title', title);
