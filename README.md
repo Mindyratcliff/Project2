@@ -1,6 +1,6 @@
 # Happy Trees
 
-![Logo](https://github.com/Mindyratcliff/Project2/blob/main/public/assets/images/Happy%20Trees.jpg)
+![Logo](https://github.com/Mindyratcliff/Project2/blob/main/public/assets/images/justTree.jpg)
 
 ![Languages](https://img.shields.io/github/languages/count/mindyratcliff/project2) ![Language](https://img.shields.io/github/languages/top/Mindyratcliff/Project2) ![MySQL](https://img.shields.io/badge/dependency-mysql-blue) ![Node](https://img.shields.io/badge/dependency-node-brightgreen) ![Travis](https://travis-ci.com/Mindyratcliff/Project2.svg?branch=main)
 
@@ -29,8 +29,12 @@ To use this:
 
 You will need to have MySQL installed.
 
-GIF DEMO HERE
-SCREENSHOT HERE
+![Landing](public/assets/images/landing-screenshot.png)
+
+![Dashboard](public/assets/images/dashboard-screenshot.png)
+
+Happy Trees can be accessed here:
+[Happy Trees](https://guarded-ravine-40907.herokuapp.com)
 
 ## Installation
 
@@ -55,6 +59,8 @@ Heroku [Heroku](https://www.heroku.com)
 Web.dev [Storage](https://web.dev/storage-for-the-web/)
 
 ESLint [ESLint](https://eslint.org)
+
+Travis CI [Travis](https://travis-ci.com)
 
 
 ## Contributing
