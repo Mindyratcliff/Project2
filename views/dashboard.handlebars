@@ -28,26 +28,24 @@
     </div>
 
     <!-- our canvas from paperjs  -->
-    <div class="art col-6" id="main">
+    <div class="art col-9" id="main">
         <div class="canvas col">
-            <canvas id="myCanvas" width="550" height="550"></canvas>
+            <canvas id="myCanvas" width="1000" height="550"></canvas>
         </div>
     </div>
-
-    <!-- our save and clear buttons for paperjs -->
-    <div class="col-2 myButtons">
-        <div>
-            <button id="save-drawing" type="button" class="save btn btn-success" data-bs-toggle="modal"
-                data-bs-target="#titleModal">Save</button>
-            <button type="button" id="clearButton" class="clear btn btn-warning"> Clear</button>
-            
-        </div>
-        
-    </div>
-</div>
+   
 {{!-- logout button moved to the buttom of page --}}
-<div> 
-    <a href="/auth/logout" class="logout btn btn-warning" id="logoutButton">Logout</a>
+<div class="row" id="buttonGroup"> 
+    <div class="col-2">
+    <a href="/auth/logout" class="logout btn btn-warning" id="logout">Logout</a>
+    </div>
+    <div class="col-2">
+    <button id="save-drawing" type="button" class="save btn btn-success" data-bs-toggle="modal"
+                data-bs-target="#titleModal">Save</button>
+    </div>
+    <div class="col-2">
+    <button type="button" id="clearButton" class="clear btn btn-warning"> Clear</button>
+    </div>
 </div>
 <!-- Modal -->
 <div class="modal fade" id="titleModal" tabindex="-1" aria-labelledby="titleModalLabel" aria-hidden="true">
