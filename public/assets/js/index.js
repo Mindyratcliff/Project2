@@ -38,7 +38,7 @@ $('#clearButton').on('click', () => {
 });
 
 //deleting list item
-$(document).on('click', '.delete-note', (event) => {
+$(document).on('click', '.delete-note', event => {
     event.stopPropagation();
     let $this = event.currentTarget;
     let drawingId = $this.dataset.id;
@@ -52,22 +52,21 @@ $(document).on('click', '.delete-note', (event) => {
         listEl.remove();
 
         // if the current active drawing is deleted, clear the canvas and change the session values
-        if(drawingId === sessionStorage.getItem('current-drawing')){
+        if (drawingId === sessionStorage.getItem('current-drawing')) {
             document.dispatchEvent(clearCanvas);
             setSession(false);
         }
     });
-
 });
 
-$(document).on('click', '#drawing-list li', (event) => {
+$(document).on('click', '#drawing-list li', event => {
     let $this = $(event.currentTarget);
     const id = $this.attr('data-id');
     const title = $this.attr('data-title');
 
     setSession(true, title, id);
 
-    $.get(`/api/drawings/${id}`, (data) => {
+    $.get(`/api/drawings/${id}`, data => {
         window._json = data.body;
         document.dispatchEvent(loadImage);
     });
@@ -78,12 +77,8 @@ const createElement = (title, id) => {
         .addClass('list-group-item')
         .attr('data-id', id)
         .attr('data-title', title);
-    const $a = $('<a>')
-        .text(title)
-        .attr('href', '#')
-        .attr('class', 'alert-link');
-    const $a2 = $('<a>')
-        .attr('href', '#');
+    const $a = $('<a>').text(title).attr('href', '#').attr('class', 'alert-link');
+    const $a2 = $('<a>').attr('href', '#');
     const $i = $('<i>')
         .addClass('fas fa-trash-alt float-right text-secondary delete-note')
         .attr('data-id', id)
@@ -97,16 +92,16 @@ const createElement = (title, id) => {
 // updates an element's data-title and data-id
 const updateElement = (element, title, id) => {
     let $element = $(element);
-    $element
-        .attr('data-id', id)
-        .attr('data-title', title);
+    $element.attr('data-id', id).attr('data-title', title);
 };
 
 const setSession = (edit, title, id) => {
     sessionStorage.setItem('edit', edit);
 
-    if ((title && !id) || (!title && id) ) {
-        console.error('setSession() cannot have only a title or only an id. Must have both or none');
+    if ((title && !id) || (!title && id)) {
+        console.error(
+            'setSession() cannot have only a title or only an id. Must have both or none'
+        );
     } else if (edit) {
         sessionStorage.setItem('current-title', title);
         sessionStorage.setItem('current-drawing', id);
@@ -124,3 +119,7 @@ const setSession = (edit, title, id) => {
         saveButton.text('Save');
     }
 };
+
+$(window).resize(() => {
+    $('#myCanvas').css({ width: '100%', height: '100%' });
+});
