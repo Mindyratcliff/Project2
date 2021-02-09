@@ -3,24 +3,25 @@
     <div class="container-fluid">
         <a class="navbar-brand " href="#">
             <span class="title">Happy</span>
-            <img src="../assets/images/justTree.jpg" alt="logo"  class="align-middle">
+            <img src="../assets/images/justTree.jpg" alt="logo" class="align-middle">
             <span class="title">Trees</span>
         </a>
     </div>
 </nav>
 
 {{!-- main content --}}
-<div class="row">
+<div class="row" id='dashboard-content'>
     <!-- our side bar saved list items with the delete icons -->
     <div class="sidebar col-3">
         <h2 style="margin-left: 8%;">Saved Work</h2>
         <ul id="drawing-list" class="list-group">
             <!--list items will be created dynamically with jquery-->
             {{#each drawings}}
-            
+
             <li class="list-group-item" data-id="{{this.dataValues.id}}" data-title="{{this.dataValues.title}}">
                 <a href="#" class="alert-link">{{this.dataValues.title}}</a>
-                <a href="#"><i class='fas fa-trash-alt float-right text-secondary delete-note' data-id="{{this.dataValues.id}}"></i></a>
+                <a href="#"><i class='fas fa-trash-alt float-right text-secondary delete-note'
+                        data-id="{{this.dataValues.id}}"></i></a>
             </li>
 
             {{/each}}
@@ -30,23 +31,25 @@
     <!-- our canvas from paperjs  -->
     <div class="art col-9" id="main">
         <div class="canvas col">
-            <canvas id="myCanvas" width="1000" height="550"></canvas>
+            <canvas id="myCanvas"></canvas>
         </div>
     </div>
-   
+</div>
+
 {{!-- logout button moved to the buttom of page --}}
-<div class="row" id="buttonGroup"> 
+<div class="row" id="buttonGroup">
     <div class="col-2">
-    <a href="/auth/logout" class="logout btn btn-warning" id="logout">Logout</a>
+        <a href="/auth/logout" class="logout btn btn-warning" id="logout">Logout</a>
     </div>
     <div class="col-2">
-    <button id="save-drawing" type="button" class="save btn btn-success" data-bs-toggle="modal"
-                data-bs-target="#titleModal">Save</button>
+        <button id="save-drawing" type="button" class="save btn btn-success" data-bs-toggle="modal"
+            data-bs-target="#titleModal">Save</button>
     </div>
     <div class="col-2">
-    <button type="button" id="clearButton" class="clear btn btn-warning"> Clear</button>
+        <button type="button" id="clearButton" class="clear btn btn-warning"> Clear</button>
     </div>
 </div>
+
 <!-- Modal -->
 <div class="modal fade" id="titleModal" tabindex="-1" aria-labelledby="titleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -60,7 +63,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button id='saveButtonModal' type="button" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+                <button id='saveButtonModal' type="button" class="btn btn-primary"
+                    data-bs-dismiss="modal">Submit</button>
             </div>
         </div>
     </div>
