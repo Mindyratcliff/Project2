@@ -16,7 +16,6 @@ app.set('view engine', 'handlebars');
 const db = require('./models');
 require('./services/passport/google');
 require('./services/passport/github');
-require('./services/passport/facebook');
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
